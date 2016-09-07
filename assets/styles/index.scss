@@ -1,2 +1,35 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+$unit: 50px;
+
+body {
+  background-color: gray;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.board {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 30em;
+  width: 30em;
+  margin: 25vh;
+}
+
+.row {
+  background-color: orchid;
+  flex: 1;
+  display: flex;
+}
+
+.row > * {
+  border: 1px solid black;
+  font-size: 20px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
