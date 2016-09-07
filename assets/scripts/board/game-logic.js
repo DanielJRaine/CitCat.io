@@ -70,7 +70,7 @@ const isGameOver = function() {
   } else if(finalColumnSum._data.indexOf(-3) >= 0 || finalRowSum.indexOf(-3) >= 0 ||
   math.trace(cellMatrix) === -3 || math.trace(yReflectedCellMatrix) === -3) {
       return -1;
-  } else if(game.cells.indexOf(0) < 0){
+  } else if(game.cells.indexOf(0) === -1){
       return 0;
   }
 };

@@ -33,7 +33,7 @@ const onClickCell = (event) => {
     alert("X wins!");
   } else if (boardLogic.isGameOver() === -1) {
     alert("O wins!");
-  } else if (boardLogic.isGameOver === 0){
+  } else if (boardLogic.isGameOver() === 0){
     alert("Cat's game!");
   } else {
     return;
