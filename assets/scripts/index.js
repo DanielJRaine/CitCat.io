@@ -5,8 +5,8 @@
 
 // use require without a reference to ensure a file is bundled
 require('./example');
-const boardEvents = require('./board/events');
-const authEvents = require('./auth/events');
+const boardEvents = require('./board/events.js');
+const authEvents = require('./auth/events.js');
 
 $(() => {
     $('.col-md-2').on('click', boardEvents.onClickCell);
