@@ -31,10 +31,13 @@ const onClickCell = (event) => {
   
   if(boardLogic.isGameOver() === 1) {
     alert("X wins!");
+    boardLogic.clearBoard();
   } else if (boardLogic.isGameOver() === -1) {
     alert("O wins!");
+    boardLogic.clearBoard();
   } else if (boardLogic.isGameOver() === 0){
     alert("Cat's game!");
+    boardLogic.clearBoard();
   } else {
     return;
   }

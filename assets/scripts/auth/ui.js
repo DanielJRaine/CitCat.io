@@ -3,7 +3,6 @@ const app = require('../app');
 
 const changePasswordSuccess = (data) => {
   console.log(data);
-  console.log(Successfully changed password);
 };
 
 const signInSuccess = (data) => {
