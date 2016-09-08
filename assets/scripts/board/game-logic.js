@@ -81,6 +81,7 @@ const isGameOver = function() {
 };
 
 const changeTurn = function() {
+  console.log("change turn");
   player_x.turn = !player_x.turn;
   player_o.turn = !player_o.turn;
 };
@@ -91,9 +92,6 @@ const clearBoard = function() {
 };
 
 module.exports = {
-  // game,
-  // player_x,
-  // player_o,
   isGameOver,
   changeTurn,
   clearBoard,
