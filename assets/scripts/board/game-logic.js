@@ -6,35 +6,23 @@ const localGame = require('./../../data/local-game.js');
 let gameData = localGame.game;
 let player_x = localGame.player_x;
 let player_o = localGame.player_o;
-// let game = {
-//   id: 0,
-//   cells: [0, 0, 0, 0, 0, 0, 0, 0, 0],
-//   over: false,
-//   player_x: {
-//     id: 0,
-//     email: "x@x.com"
-//   },
-//   player_o: {
-//     id: 1,
-//     email: "o@o.com"
-//   }
-// };
-//
-// let player_x = {
-//   id: 0,
-//   email: 'x@x.com',
-//   icon: 'x',
-//   score: 0,
-//   turn: true
-// };
-//
-// let player_o = {
-//   id: 1,
-//   email: 'o@o.com',
-//   icon: 'x',
-//   score: 0,
-//   turn: false
-// };
+
+const changeTurn = function() {
+  console.log("change turn");
+  player_x.turn = !player_x.turn;
+  player_o.turn = !player_o.turn;
+};
+
+const clearBoard = function() {
+  gameData.cells = [0,0,0,0,0,0,0,0,0];
+  $('.cell').html('');
+};
+
+const resetGame = function() {
+  clearBoard();
+  player_x.turn = true;
+  player_o.turn = false;
+};
 
 // represents X as +1 and O as -1.
 // Adds rows, columns, and traces using linear algebra.
@@ -80,19 +68,9 @@ const isGameOver = function() {
   }
 };
 
-const changeTurn = function() {
-  console.log("change turn");
-  player_x.turn = !player_x.turn;
-  player_o.turn = !player_o.turn;
-};
-
-const clearBoard = function() {
-  gameData.cells = [0,0,0,0,0,0,0,0,0];
-  $('.cell').html('');
-};
-
 module.exports = {
-  isGameOver,
   changeTurn,
   clearBoard,
+  resetGame,
+  isGameOver,
 }

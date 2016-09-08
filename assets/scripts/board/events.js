@@ -9,6 +9,12 @@ let gameBoard = localGame.game;
 let player_x = localGame.player_x;
 let player_o = localGame.player_o;
 
+const onCreateGame = (event) => {
+  event.preventDefault();
+  boardLogic.resetGame();
+  boardApi.createGame();
+};
+
 const onClickCell = (event) => {
   event.preventDefault();
   let cellIndex = $(event.target).attr('id');
@@ -32,18 +38,19 @@ const onClickCell = (event) => {
   
   if(boardLogic.isGameOver() === 1) {
     alert("X wins!");
-    boardLogic.clearBoard();
+    boardLogic.resetGame();
   } else if (boardLogic.isGameOver() === -1) {
     alert("O wins!");
-    boardLogic.clearBoard();
+    boardLogic.resetGame();
   } else if (boardLogic.isGameOver() === 0){
     alert("Cat's game!");
-    boardLogic.clearBoard();
+    boardLogic.resetGame();
   } else {
     return;
   }
 };
 
 module.exports = {
+  onCreateGame,
   onClickCell,
 };
