@@ -3,26 +3,27 @@
 const boardApi = require('./api.js');
 const boardUi = require('./ui.js');
 const boardLogic = require('./game-logic.js');
+const localGame = require('./../../data/local-game.js');
 
-let game = boardLogic.game;
-let player_x = boardLogic.player_x;
-let player_o = boardLogic.player_o;
+let gameBoard = localGame.game;
+let player_x = localGame.player_x;
+let player_o = localGame.player_o;
 
 const onClickCell = (event) => {
   event.preventDefault();
   let cellIndex = $(event.target).attr('id');
   
-  if (game.cells[cellIndex] !== 0) {
+  if (gameBoard.cells[cellIndex] !== 0) {
     alert("That square is taken");
     
   } else if (player_x.turn) {
       boardUi.xClick();
-      game.cells[cellIndex] = 1;
+      gameBoard.cells[cellIndex] = 1;
       boardLogic.changeTurn();
       
   } else if (player_o.turn) {
       boardUi.oClick();
-      game.cells[cellIndex] = -1;
+      gameBoard.cells[cellIndex] = -1;
       boardLogic.changeTurn();
       
   } else {
