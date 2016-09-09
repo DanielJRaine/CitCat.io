@@ -1,5 +1,5 @@
 'use strict';
-const app = require('../app');
+const app = require('../app.js');
 
 const changePasswordSuccess = (data) => {
   console.log(data);
@@ -7,7 +7,7 @@ const changePasswordSuccess = (data) => {
 
 const signInSuccess = (data) => {
   app.user = data.user;
-  console.log(data);
+  console.log(app);
 };
 
 const signOutSuccess = () => {

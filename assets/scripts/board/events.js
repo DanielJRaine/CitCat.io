@@ -12,7 +12,19 @@ let player_o = localGame.player_o;
 const onCreateGame = (event) => {
   event.preventDefault();
   boardLogic.resetGame();
-  boardApi.createGame();
+  boardApi.createGame()
+    .done(boardUi.createGameSuccess)
+    .fail(boardUi.createGameFail);
+};
+
+const onUpdateGame = (event, over) => {
+  event.preventDefault();
+  let cellIndex = $(event.target).attr('id');
+  let cellValue = $(event.target).html();
+  
+  boardApi.updateGame(cellIndex, cellValue, over)
+    .done(boardUi.updateSuccess)
+    .fail(boardUi.updateFail);
 };
 
 const onClickCell = (event) => {
@@ -26,11 +38,13 @@ const onClickCell = (event) => {
       boardUi.xClick();
       gameBoard.cells[cellIndex] = 1;
       boardLogic.changeTurn();
+      onUpdateGame(event, false);
       
   } else if (player_o.turn) {
       boardUi.oClick();
       gameBoard.cells[cellIndex] = -1;
       boardLogic.changeTurn();
+      onUpdateGame(event, false);
       
   } else {
       boardUi.turnError();
@@ -38,13 +52,19 @@ const onClickCell = (event) => {
   
   if(boardLogic.isGameOver() === 1) {
     alert("X wins!");
+    onUpdateGame(event, true);
     boardLogic.resetGame();
+    
   } else if (boardLogic.isGameOver() === -1) {
     alert("O wins!");
+    onUpdateGame(event, true);
     boardLogic.resetGame();
+    
   } else if (boardLogic.isGameOver() === 0){
     alert("Cat's game!");
+    onUpdateGame(event, true);
     boardLogic.resetGame();
+    
   } else {
     return;
   }
@@ -52,5 +72,6 @@ const onClickCell = (event) => {
 
 module.exports = {
   onCreateGame,
+  onUpdateGame,
   onClickCell,
 };

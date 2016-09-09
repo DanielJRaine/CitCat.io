@@ -8,7 +8,6 @@ let player_x = localGame.player_x;
 let player_o = localGame.player_o;
 
 const changeTurn = function() {
-  console.log("change turn");
   player_x.turn = !player_x.turn;
   player_o.turn = !player_o.turn;
 };
