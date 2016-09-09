@@ -24,7 +24,7 @@ const getGameIndex = () => {
 
 const updateGame = (cellIndex, cellValue, over) => {
   return $.ajax({
-    url: app.host + '/games/' + app.user.game.id,
+    url: app.host + '/games/' + app.game.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + app.user.token,

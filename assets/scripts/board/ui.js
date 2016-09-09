@@ -17,6 +17,7 @@ const turnError = () => {
 const createGameSuccess = (data) => {
   console.log("create game success");
   console.log(data);
+  app.game = data.game;
 };
 
 const createGameFail = () => {
