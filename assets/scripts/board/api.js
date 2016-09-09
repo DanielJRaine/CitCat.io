@@ -2,7 +2,6 @@
 let app = require('../app.js');
 
 const createGame = () => {
-  console.log("inside createGame");
   return $.ajax({
     url: app.host + '/games',
     method: 'POST',
