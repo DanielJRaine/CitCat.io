@@ -20,7 +20,7 @@ const showGameLog = function() {
     },
   })
    .done(function(data){
-     console.log(data.games.length);
+     $('#score-counter').html(data.games.length);
    });
 };
 
