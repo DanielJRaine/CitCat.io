@@ -12,6 +12,7 @@ const signInSuccess = function(data) {
   app.user = data.user;
   $('#sign-up').hide();
   $('#sign-in').hide();
+  $('.user-email').text(app.user.email);
   boardApi.createGame()
     .done(function(data){
       boardUi.createGameSuccess(data);
