@@ -10,6 +10,7 @@ const signUpSuccess = function() {
 
 const signInSuccess = function(data) {
   app.user = data.user;
+  $('.cell').show();
   $('#sign-up').hide();
   $('#sign-in').hide();
   $('.user-email').text(app.user.email);

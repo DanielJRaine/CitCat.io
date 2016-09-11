@@ -9,6 +9,7 @@ const boardEvents = require('./board/events.js');
 const authEvents = require('./auth/events.js');
 
 $(() => {
+    $('.cell').hide();
     $('.col-md-2').on('click', boardEvents.onClickCell);
     $('#create-game').on('click', boardEvents.onCreateGame);
     authEvents.addHandlers();

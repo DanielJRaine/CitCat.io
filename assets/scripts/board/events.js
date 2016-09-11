@@ -29,8 +29,8 @@ const onUpdateGame = (event, over) => {
 
 const endGame = (event, over, winner) => {
   event.preventDefault();
-  onUpdateGame(event, over);
   boardUi.endGameAnimation(winner);
+  onUpdateGame(event, over);
   onCreateGame(event);
 };
 
@@ -39,7 +39,6 @@ const onClickCell = (event) => {
   let cellIndex = $(event.target).attr('id');
   
   if (gameBoard.cells[cellIndex] !== 0) {
-    alert("That square is taken");
     
   } else if (player_x.turn) {
       boardUi.xClick();
