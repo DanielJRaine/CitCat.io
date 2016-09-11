@@ -1,13 +1,16 @@
 'use strict';
 const app = require('../app.js');
 const boardApi = require('../board/api.js');
+const boardUi = require('../board/ui.js');
 
 const signInSuccess = function(data) {
   console.log("sign in success");
   app.user = data.user;
+  
   boardApi.createGame()
     .done(function(data){
       showGameLog();
+      boardUi.createGameSuccess(data);
     });
 };
 
