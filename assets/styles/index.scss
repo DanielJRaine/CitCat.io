@@ -31,17 +31,61 @@ nav > * {
   margin: 25vh;
 }
 
-.row {
+.board > .row {
   background-color: orchid;
   flex: 1;
   display: flex;
 }
 
-.row > * {
+.board .row > * {
   border: 1px solid black;
   font-size: 20px;
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+body.modal-open #wrap{
+    -webkit-filter: blur(7px);
+    -moz-filter: blur(15px);
+    -o-filter: blur(15px);
+    -ms-filter: blur(15px);
+    filter: blur(15px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+  
+.myModalLabel {
+  width: 30em;
+}
+
+.modal-backdrop {
+  background-color: rgba(240, 240, 240, 15%);
+}
+
+.close {
+    font-size: 50px;
+    display:block;
+}
+
+.game-over-container {
+  width: 40%;
+}
+
+#game-over-row {
+  width: 100%;
+  float: left;
+}
+
+.gameOverAnimation {
+  background-color: #f7f7f7;
+  filter: none;
+  text-align: center;
+}
+
+.text-center {
+  text-align: center;
 }

@@ -18,6 +18,7 @@ const createGameSuccess = (data) => {
   app.game = data.game;
   console.log("new game created");
   userInfoApi.showGameLog();
+  $('#myModal').modal('show');
 };
 
 const createGameFail = () => {
@@ -32,7 +33,8 @@ const updateFail = () => {
 };
 
 const endGameAnimation = (winner) => {
-  alert(winner);
+  $('#myModal').modal('show');
+  $('.gameOverAnimation').html(winner + " wins!");
 };
 
 module.exports = {
