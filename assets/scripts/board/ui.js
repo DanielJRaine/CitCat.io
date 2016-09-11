@@ -1,6 +1,6 @@
 'use strict';
 const app = require('../app.js');
-const userInfoApi = require('../user-info/api.js')
+const userInfoApi = require('../user-info/api.js');
 
 const xClick = () => {
   $(event.target).html('x');
@@ -24,11 +24,15 @@ const createGameFail = () => {
   console.log("create game failed");
 };
 
-const updateSuccess = (data) => {
+const updateSuccess = () => {
 };
 
 const updateFail = () => {
   console.log("update fail");
+};
+
+const endGameAnimation = (winner) => {
+  alert(winner);
 };
 
 module.exports = {
@@ -39,4 +43,5 @@ module.exports = {
   createGameFail,
   updateSuccess,
   updateFail,
+  endGameAnimation,
 };

@@ -46,9 +46,10 @@ const isGameOver = function() {
                                gameData.cells.slice(3,6),
                                gameData.cells.slice(6)]);
 
-  let yReflectedCellMatrix = math.matrix([[gameData.cells[2], gameData.cells[1], gameData.cells[0]],
-                                          [gameData.cells[5], gameData.cells[4], gameData.cells[3]],
-                                          [gameData.cells[8], gameData.cells[7], gameData.cells[6]]]);
+  let yReflectedCellMatrix =
+  math.matrix([[gameData.cells[2], gameData.cells[1], gameData.cells[0]],
+               [gameData.cells[5], gameData.cells[4], gameData.cells[3]],
+               [gameData.cells[8], gameData.cells[7], gameData.cells[6]]]);
   
   if(finalColumnSum._data.indexOf(3) >= 0 ||
      finalRowSum.indexOf(3) >= 0          ||
