@@ -4,10 +4,14 @@ const boardApi = require('../board/api.js');
 const boardUi = require('../board/ui.js');
 const userInfoApi = require('../user-info/api.js');
 
+const signUpSuccess = function() {
+
+};
+
 const signInSuccess = function(data) {
-  console.log("sign in success");
   app.user = data.user;
-  
+  $('#sign-up').hide();
+  $('#sign-in').hide();
   boardApi.createGame()
     .done(function(data){
       boardUi.createGameSuccess(data);
@@ -15,26 +19,11 @@ const signInSuccess = function(data) {
     });
 };
 
-// const showGameLog = function() {
-//   let gameLog = $.ajax({
-//     url: app.host + '/games',
-//     method: 'GET',
-//     headers: {
-//       Authorization: 'Token token=' + app.user.token,
-//     },
-//   })
-//    .done(function(data){
-//      $('#score-counter').html(data.games.length);
-//    });
-// };
-
-// const showGameCount = (gamesLog) => {
-//   console.log(gamesLog['games'].length());
-// };
-
 const signOutSuccess = () => {
-  return true;
+  $('#sign-up').show();
+  $('#sign-in').show();
   app.user = {};
+  return true;
 };
 
 const success = (data) => {
@@ -43,10 +32,10 @@ const success = (data) => {
 
 const failure = (error) => {
   console.error(error);
-  console.log("did not execute request");
 };
 
 module.exports = {
+  signUpSuccess,
   signInSuccess,
   signOutSuccess,
   success,

@@ -27,6 +27,13 @@ const onUpdateGame = (event, over) => {
     .fail(boardUi.updateFail);
 };
 
+const endGame = (event, over, winner) => {
+  event.preventDefault();
+  onUpdateGame(event, over);
+  boardUi.endGameAnimation(winner);
+  onCreateGame(event);
+};
+
 const onClickCell = (event) => {
   event.preventDefault();
   let cellIndex = $(event.target).attr('id');
@@ -51,19 +58,13 @@ const onClickCell = (event) => {
   }
   
   if(boardLogic.isGameOver() === 1) {
-    alert("X wins!");
-    onUpdateGame(event, true);
-    onCreateGame(event);
+    endGame(event, true, 'x');
     
   } else if (boardLogic.isGameOver() === -1) {
-    alert("O wins!");
-    onUpdateGame(event, true);
-    onCreateGame(event);
+    endGame(event, true, 'o');
     
   } else if (boardLogic.isGameOver() === 0){
-    alert("Cat's game!");
-    onUpdateGame(event, true);
-    onCreateGame(event);
+    endGame(event, true, '');
         
   } else {
     return;

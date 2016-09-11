@@ -1,6 +1,6 @@
 'use strict';
 const app = require('../app.js');
-const userInfoApi = require('../user-info/api.js')
+const userInfoApi = require('../user-info/api.js');
 
 const xClick = () => {
   $(event.target).html('x');
@@ -11,24 +11,29 @@ const oClick = () => {
 };
 
 const turnError = () => {
-  console.log('error in turns attribute');
 };
 
 const createGameSuccess = (data) => {
   app.game = data.game;
-  console.log("new game created");
   userInfoApi.showGameLog();
 };
 
 const createGameFail = () => {
-  console.log("create game failed");
 };
 
-const updateSuccess = (data) => {
+const updateSuccess = () => {
 };
 
 const updateFail = () => {
-  console.log("update fail");
+};
+
+const endGameAnimation = (winner) => {
+  $('#myModal').modal('show');
+  if (winner !== ''){
+    $('.gameOverAnimation').html(winner + " wins!");
+  } else {
+    $('.gameOverAnimation').html("Cat's Game!");
+  }
 };
 
 module.exports = {
@@ -39,4 +44,5 @@ module.exports = {
   createGameFail,
   updateSuccess,
   updateFail,
+  endGameAnimation,
 };
