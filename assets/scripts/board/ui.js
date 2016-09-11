@@ -14,8 +14,8 @@ const turnError = () => {
 };
 
 const createGameSuccess = (data) => {
-  console.log(data);
   app.game = data.game;
+  console.log("new game created");
 };
 
 const createGameFail = () => {
@@ -23,7 +23,20 @@ const createGameFail = () => {
 };
 
 const updateSuccess = (data) => {
-  console.log(data);
+  showGameLog();
+};
+
+const showGameLog = function() {
+  let gameLog = $.ajax({
+    url: app.host + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  })
+   .done(function(data){
+     console.log(data);
+   });
 };
 
 const updateFail = () => {

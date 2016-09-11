@@ -1,9 +1,32 @@
 'use strict';
 const app = require('../app.js');
+const boardApi = require('../board/api.js');
 
-const signInSuccess = (data) => {
+const signInSuccess = function(data) {
+  console.log("sign in success");
   app.user = data.user;
+  boardApi.createGame()
+    .done(function(data){
+      showGameLog();
+    });
 };
+
+const showGameLog = function() {
+  let gameLog = $.ajax({
+    url: app.host + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  })
+   .done(function(data){
+     console.log(data.games.length);
+   });
+};
+
+// const showGameCount = (gamesLog) => {
+//   console.log(gamesLog['games'].length());
+// };
 
 const signOutSuccess = () => {
   return true;
