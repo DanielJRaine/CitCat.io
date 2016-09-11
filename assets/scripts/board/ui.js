@@ -11,30 +11,29 @@ const oClick = () => {
 };
 
 const turnError = () => {
-  console.log('error in turns attribute');
 };
 
 const createGameSuccess = (data) => {
   app.game = data.game;
-  console.log("new game created");
   userInfoApi.showGameLog();
-  $('#myModal').modal('show');
 };
 
 const createGameFail = () => {
-  console.log("create game failed");
 };
 
 const updateSuccess = () => {
 };
 
 const updateFail = () => {
-  console.log("update fail");
 };
 
 const endGameAnimation = (winner) => {
   $('#myModal').modal('show');
-  $('.gameOverAnimation').html(winner + " wins!");
+  if (winner !== ''){
+    $('.gameOverAnimation').html(winner + " wins!");
+  } else {
+    $('.gameOverAnimation').html("Cat's Game!");
+  }
 };
 
 module.exports = {
