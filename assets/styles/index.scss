@@ -1,6 +1,18 @@
 $bootstrap-sass-asset-helper: false;
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+@font-face {
+  font-family: 'tomhand';
+  src: url('fonts/toms-handwriting/tomhand.ttf') format('truetype'), local('tomhand');
+}
+
+body {
+  font-family: 'tomhand', serif;
+  font-weight: bolder;
+  color: WhiteSmoke;
+}
+
 $unit: 50px;
 
 .board-container {
@@ -14,6 +26,7 @@ $unit: 50px;
 nav {
   width: 20%;
   float: right;
+  color: #521205;
 }
 
 nav > * {
@@ -33,13 +46,13 @@ nav > * {
 }
 
 .board > .row {
-  background-color: orchid;
+  background-color: #212121;
   flex: 1;
   display: flex;
 }
 
 .board .row > * {
-  border: 1px solid black;
+  border: 1px solid #616161;
   font-size: 20px;
   flex: 1;
   display: flex;
@@ -82,7 +95,7 @@ body.modal-open #wrap{
 }
 
 .gameOverAnimation {
-  background-color: #f7f7f7;
+  background-color: #212121;
   filter: none;
   text-align: center;
 }
