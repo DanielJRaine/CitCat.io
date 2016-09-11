@@ -1,5 +1,6 @@
 'use strict';
 const app = require('../app.js');
+const userInfoApi = require('../user-info/api.js')
 
 const xClick = () => {
   $(event.target).html('x');
@@ -16,6 +17,7 @@ const turnError = () => {
 const createGameSuccess = (data) => {
   app.game = data.game;
   console.log("new game created");
+  userInfoApi.showGameLog();
 };
 
 const createGameFail = () => {
@@ -23,20 +25,6 @@ const createGameFail = () => {
 };
 
 const updateSuccess = (data) => {
-  showGameLog();
-};
-
-const showGameLog = function() {
-  let gameLog = $.ajax({
-    url: app.host + '/games',
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + app.user.token,
-    },
-  })
-   .done(function(data){
-     console.log(data);
-   });
 };
 
 const updateFail = () => {

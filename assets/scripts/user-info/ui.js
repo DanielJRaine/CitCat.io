@@ -1,13 +1,11 @@
 'use strict';
-const app = require('../app.js');
 const userInfoApi = require('./api.js');
+const boardApi = require('../board/api.js');
+const boardUi = require('../board/ui.js');
+const authApi = require('../auth/api.js');
+const authUi = require('../auth/ui.js');
 
-const showGameCount = () => {
-  console.log("in user-info ui, show Game count");
-  console.log(userInfoApi.getGameIndex);
-  // $('#game-count').html(app.game.length());
-};
-
+$('#score-counter').html(data.games.length);
 module.exports = {
-  showGameCount,
+  
 };

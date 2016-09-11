@@ -53,18 +53,18 @@ const onClickCell = (event) => {
   if(boardLogic.isGameOver() === 1) {
     alert("X wins!");
     onUpdateGame(event, true);
-    boardLogic.resetGame();
+    onCreateGame(event);
     
   } else if (boardLogic.isGameOver() === -1) {
     alert("O wins!");
     onUpdateGame(event, true);
-    boardLogic.resetGame();
+    onCreateGame(event);
     
   } else if (boardLogic.isGameOver() === 0){
     alert("Cat's game!");
     onUpdateGame(event, true);
-    boardLogic.resetGame();
-    
+    onCreateGame(event);
+        
   } else {
     return;
   }
