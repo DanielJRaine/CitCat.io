@@ -4,9 +4,14 @@ const boardApi = require('../board/api.js');
 const boardUi = require('../board/ui.js');
 const userInfoApi = require('../user-info/api.js');
 
+const signUpSuccess = function() {
+
+};
+
 const signInSuccess = function(data) {
   app.user = data.user;
-  
+  $('#sign-up').hide();
+  $('#sign-in').hide();
   boardApi.createGame()
     .done(function(data){
       boardUi.createGameSuccess(data);
@@ -15,8 +20,10 @@ const signInSuccess = function(data) {
 };
 
 const signOutSuccess = () => {
-  return true;
+  $('#sign-up').show();
+  $('#sign-in').show();
   app.user = {};
+  return true;
 };
 
 const success = (data) => {
@@ -28,6 +35,7 @@ const failure = (error) => {
 };
 
 module.exports = {
+  signUpSuccess,
   signInSuccess,
   signOutSuccess,
   success,
