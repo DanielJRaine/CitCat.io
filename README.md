@@ -1,67 +1,48 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+Welcome to CitCat.io, a Tic-Tac-Toe web app for cats.
+The game is hosted on GitHub Pages (DanielJRaine.github.io), and a custom domain name was registered with AWS Route53 - www.CitCat.io.
 
-# js-template
+Project management was done using Trello.
+  - https://trello.com/b/oQnvItZs/citcat-io
+Wireframing and mockup was done using NinjaMock.
+  - https://ninjamock.com/Designer/Workplace/3541471/Page1
+Entity Relationship modeling was done using LucidChart.
+  - https://www.lucidchart.com/documents/edit/31e96b04-103c-4d0c-94f9-ba08b79ddc44#
+Math.js library was included to handle matrix algebra.
+Victor.js was installed to experiment with using vectors, but it was not used in production.
+git and GitHub were used for source/version control.
+  - https://github.com/DanielJRaine/CitCat.io
+Bootstrap components were used as templates for HTML/CSS.
+BootSnipp snippets were used for certain components.
 
-A template for starting front-end projects. Webpack for `require` system, build
-pipeline, and development server. Boostrap and Handlebars.js included. No
-front-end frameworks included.
+The first step in development was to create a wireframe/mockup as a seed for ideas.  During this process, I wrote user stories to help flesh out the basic skeleton of ideas and used them to write comments on the mockup explaining potential behaviors of each element.  In this way, the mockup created the user stories, and the user stories created the mockup.  After a back-and-forth conversation between these two, all of the features in the spec had been mapped out.
 
-## Dependencies
+At this point I started playing around with project management software and eventually settled upon Trello to help manage the many moving parts of the project.  I created a progression of project to-do lists, starting with planning/UX design which I had partially completed already.  I mapped out the next steps in order of priority.  My goal was to create a working game, first and foremost, and only then add server interactivity and deploy. I planned to start with a simple HTML page with only enough features to allow basic interaction with JQuery to serve as input for my game logic.  Once the game logic was working and bug-free, I would then move onto more advanced styling and CSS features before finally deploying the project.
 
-Install with `npm install`.
+The next step was to write pseudo-code to help translate the mockup into production code.  I used LucidChart to graphically represent a list of objects corresponding to elements from the mockup, and I generated a rudimentary entity relationship diagram of my objects' properties, behaviors, and interactions.
 
--   [Webpack](https://webpack.github.io)
--   [Bootstrap](http://getbootstrap.com)
--   [Handlebars.js](http://handlebarsjs.com)
+After getting a good bird's eye view of the project as a whole, I then started on the code itself.  I began with mapping out the DOM tree in HTML, adding class and ID names that I had decided upon during mockup and ERD.  CSS was added to make a basic game grid, and JQuery was applied to make the cells interactive.  Once I had click events mapped to individual cells, I then started writing my game logic.
 
-At the beginning of each cohort, update the versions in
-[`package.json`](package.json) by replace all versions with a glob (`*`) and
-running `npm update --save && npm update --save-dev`. You may wish to test these
-changes by deleting the `node_modules` directory and running `npm install`.
-Fix any conflicts.
+I knew this game could be solved using linear algebra (matrix math), so I did some research to see if there were any mathematics papers on the subject that might give me an idea for an algorithm to use. I discovered that if I could represent the game board as a 3x3 matrix and represent x's, o's, and empty spaces as numbers (1, -1, and 0), then I could use all sorts of mathematical tools to easily solve for win conditions.  In case of a win, some set of cells adds up to either +3 or -3, either on a row, column or diagonal.  Using vector (2D matrix) addition, I added up the 3 rows in a single step and then checked to see if +3 or -3 was in the resulting vector.  No loops necessary.  The same was done for columns.  Lastly was the diagonals problem.  Luckily, Math.js had a function for calculating the 'trace' of a matrix (the sum of diagonal elements), so that too was a single easy calculation.  The only remaining step was to find the what I will call the reverse trace (the some of the other diagonal, from top-right to bottom-left).  This is where the math.js library failed me.  It did not have a built in function for calculating the reverse trace, so I had to do some actual math myself.  I looked up how to perform matrix rotations, thinking I could simply rotate the matrix 90 degrees and then use the calculate trace function.  This kept on not working how I expected it to, so eventually I gave up on it after trying several different matrix transformations and I simply created stored the cells in my model matrix backwards so I could calculate the reverse trace.  By this point the game logic was done.
 
-## Installation
+Next, I added checks to make sure the user could not break the game, either by continuing play after the game had ended or by clicking on the same square twice.  Turn changing was implemented as well, and by this point, my internal game system was working well enough where I now felt comfortable integrating it with the server API.
 
-1.  [Download](../../archive/master.zip) this template.
-1.  Unzip and rename the template directory.
-1.  Empty [`README.md`](README.md) and fill with your own content.
-1.  Move into the new project and `git init`.
-1.  Install dependencies with `npm install`.
+AJAX calls were written for my game logic, and I was able to take my local representation of game state and upload it to the server using POST and PATCH requests.  I then added user authentification.
 
-## Structure
+With all of the concerns cropping up, I wanted to structure my code in a way that kept everything separate.  I refactored my functions into board, auth, and user-info directories and tried to make it so there was no cross-talk between them.  However, I ran into an issue here where one of my user-info methods (showGameLog, which displays number of games played) did not have a DOM event to trigger it, since it only happened either upon user sign in (an auth concern) or creation of a new game (a board concern).  I thought of a way around this problem by having my user-info ShowGameLog function 'listen' to the app object (which both auth and board communicate with) for when auth or board store user or game info into it.  This proved to be tricky.  I knew I needed an object listener.  I didn't know if that existed.  So I googled around and found a few functions - Object.observe, Object.watch, proxies, etc.  One of these was deprecated, the other had warning signs all over its documentation saying NOT to use it in production code and only use for debugging.  Then I discovered Backbone.js.  I knew this could be a rabbit hole, so I just learned about it and figured out that it was an MVC framework that I could use to set object listeners so I could get the perfect separation of concerns I was lacking using only JQuery and AJAX.
 
-Dependencies are stored in [`package.json`](package.json).
+I decided that I needed to finish the project and get it functional before diving down this rabbit hole, so I went on to complete all the spec requirements, at which point I would decide whether or not to refactor my entire app using Backbone.
 
-Do not configure `grunt` packages directly in the
-[`Gruntfile.js`](Gruntfile.js). Instead, store configurations in the
-[`grunt`](grunt) directory. You won't need a top-level key, since that's
-generated by the `Gruntfile.js` based on the filename of the configuration
-object stored in the `grunt` directory.
+Once I got everything working with the server-side API, I was ready to deploy.  I pushed my work to github pages, but there was an issue with the server API.  It was sending out 400 messages which seemed like there was a problem with security settings.  I found an issue filed on this problem hinting that it was an HTTPS problem and that I might need to use SSL/TLS.  I researched the matter and discovered that GitHub Pages enforces HTTPS to be used for its default domains, but if you use a custom domain, you can get away without using HTTPS.  My game now worked in its deployed form.
 
-Developers should store JavaScript files in [`assets/scripts`](assets/scripts).
-The "manifest" or entry-point is
-[`assets/scripts/index.js`](assets/scripts/index.js). In general, only
-application initialization goes in this file. It's normal for developers to
-start putting all code in this file, but encourage them to break out different
-responsibilities and use the `require` syntax put references where they're
-needed.
+From here all I had to do was make it look crisp and tweak the CSS.
 
-Developers should store styles in [`assets/styles`](assets/styles).
+Unsolved Problems:
+- HTTPS
+- Reverse trace and matrix rotations
+- Refactoring into Backbone
+- Resolving responses emitted from setting multiple event listeners to the same event.
 
-Developers should use [getFormFields](forms.md) to retrieve form data to send to
- an API.
 
-## Tasks
-
-Developers should run these often!
-
--   `grunt nag` or just `grunt`: runs code quality analysis tools on your code
-    and complains
--   `grunt reformat`: reformats all your code in a standard style
--   `grunt serve`: generates bundles, watches, and livereloads
--   `grunt test`: runs any automated tests, depends on `grunt build`
--   `grunt build`: place bundled styles and scripts where `index.html` can find
-    them
 
 ## [License](LICENSE)
 
