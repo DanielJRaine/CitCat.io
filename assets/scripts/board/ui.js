@@ -4,10 +4,12 @@ const userInfoApi = require('../user-info/api.js');
 
 const xClick = () => {
   $(event.target).html('x');
+  $(event.target).css('font-size', '100px');
 };
 
 const oClick = () => {
   $(event.target).html('o');
+  $(event.target).css('font-size', '100px');
 };
 
 const turnError = () => {
