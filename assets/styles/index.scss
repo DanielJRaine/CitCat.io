@@ -13,6 +13,10 @@ body {
   color: WhiteSmoke;
 }
 
+p {
+  font-size: 20px;
+}
+
 $unit: 50px;
 
 .board-container {
@@ -58,6 +62,9 @@ nav > * {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#welcome {
 }
 
 body.modal-open #wrap{

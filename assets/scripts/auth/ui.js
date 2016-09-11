@@ -5,14 +5,18 @@ const boardUi = require('../board/ui.js');
 const userInfoApi = require('../user-info/api.js');
 
 const signUpSuccess = function() {
-
+  
 };
 
 const signInSuccess = function(data) {
   app.user = data.user;
+  $('#welcome').hide();
   $('.cell').show();
+  $('#create-game').show();
   $('#sign-up').hide();
   $('#sign-in').hide();
+  $('#sign-out').show();
+  $('#change-password').show();
   $('.user-email').text(app.user.email);
   boardApi.createGame()
     .done(function(data){
@@ -22,8 +26,12 @@ const signInSuccess = function(data) {
 };
 
 const signOutSuccess = () => {
+  $('#create-game').hide();
+  $('#welcome').show();
   $('#sign-up').show();
   $('#sign-in').show();
+  $('.user-email').html('Cit@Cat.io');
+  $('#score-counter').html('><(((O>');
   app.user = {};
   return true;
 };
