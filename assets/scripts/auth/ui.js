@@ -8,6 +8,8 @@ const signUpSuccess = function() {
   
 };
 
+// refactor into authToggle, which toggles on/off the appropriate auth forms.
+
 const signInSuccess = function(data) {
   app.user = data.user;
   $('#welcome').hide();
@@ -32,6 +34,7 @@ const signOutSuccess = () => {
   $('#sign-in').show();
   $('.user-email').html('Cit@Cat.io');
   $('#score-counter').html('><(((O>');
+  $('#change-password').hide();
   app.user = {};
   return true;
 };
