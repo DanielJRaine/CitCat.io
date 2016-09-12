@@ -37,6 +37,7 @@ const signOutSuccess = () => {
   $('#score-counter').html('><(((O>');
   $('#change-password').hide();
   $('#sign-out').hide();
+  $('.cell').hide();
   boardLogic.clearBoard();
   
   app.user = {};
