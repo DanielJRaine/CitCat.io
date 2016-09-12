@@ -56501,6 +56501,7 @@ webpackJsonp([0],[
 	var boardApi = __webpack_require__(5);
 	var boardUi = __webpack_require__(7);
 	var userInfoApi = __webpack_require__(8);
+	var boardLogic = __webpack_require__(9);
 
 	var signUpSuccess = function signUpSuccess() {};
 
@@ -56531,6 +56532,8 @@ webpackJsonp([0],[
 	  $('#score-counter').html('><(((O>');
 	  $('#change-password').hide();
 	  $('#sign-out').hide();
+	  boardLogic.clearBoard();
+
 	  app.user = {};
 	  return true;
 	};
