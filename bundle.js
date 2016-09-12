@@ -226,7 +226,8 @@ webpackJsonp([0],[
 	  if (winner !== '') {
 	    $('.gameOverAnimation').html(winner + " wins!");
 	  } else {
-	    $('.gameOverAnimation').html("Cat's Game!");
+	    $('.gameOverAnimation').css('color', 'crimson');
+	    $('.gameOverAnimation').html("I <img data-bind='attr: {src: url}, style: {width: '48px', height:'48px'}' src='https://cdn1.iconfinder.com/data/icons/animals-18/154/cat-seat-skin-body-animal-64.png' style='width: 100px; height: 100px; background-color: white'> WIN");
 	  }
 	};
 
