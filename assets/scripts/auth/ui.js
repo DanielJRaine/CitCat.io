@@ -35,6 +35,7 @@ const signOutSuccess = () => {
   $('.user-email').html('Cit@Cat.io');
   $('#score-counter').html('><(((O>');
   $('#change-password').hide();
+  $('#sign-out').hide();
   app.user = {};
   return true;
 };
