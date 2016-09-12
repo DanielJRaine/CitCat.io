@@ -3,6 +3,7 @@ const app = require('../app.js');
 const boardApi = require('../board/api.js');
 const boardUi = require('../board/ui.js');
 const userInfoApi = require('../user-info/api.js');
+const boardLogic = require('../board/game-logic.js');
 
 const signUpSuccess = function() {
   
@@ -36,6 +37,8 @@ const signOutSuccess = () => {
   $('#score-counter').html('><(((O>');
   $('#change-password').hide();
   $('#sign-out').hide();
+  boardLogic.clearBoard();
+  
   app.user = {};
   return true;
 };
