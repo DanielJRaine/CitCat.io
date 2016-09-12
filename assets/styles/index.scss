@@ -4,7 +4,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 @font-face {
   font-family: 'tomhand';
-  src: url('fonts/toms-handwriting/tomhand.ttf') format('truetype'), local('tomhand');
+  src: url('./fonts/toms-handwriting/tomhand.ttf') format('truetype'), local('tomhand');
 }
 
 body {
