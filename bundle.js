@@ -56503,6 +56503,8 @@ webpackJsonp([0],[
 
 	var signUpSuccess = function signUpSuccess() {};
 
+	// refactor into authToggle, which toggles on/off the appropriate auth forms.
+
 	var signInSuccess = function signInSuccess(data) {
 	  app.user = data.user;
 	  $('#welcome').hide();
@@ -56526,6 +56528,7 @@ webpackJsonp([0],[
 	  $('#sign-in').show();
 	  $('.user-email').html('Cit@Cat.io');
 	  $('#score-counter').html('><(((O>');
+	  $('#change-password').hide();
 	  app.user = {};
 	  return true;
 	};
