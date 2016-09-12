@@ -1,3 +1,4 @@
+
 Welcome to CitCat.io, a Tic-Tac-Toe web app for cats.
 The game is hosted on GitHub Pages (DanielJRaine.github.io), and a custom domain name was registered with AWS Route53 - www.CitCat.io.
 
@@ -37,10 +38,11 @@ Once I got everything working with the server-side API, I was ready to deploy.  
 From here all I had to do was make it look crisp and tweak the CSS.
 
 Unsolved Problems:
-- HTTPS
 - Reverse trace and matrix rotations
 - Refactoring into Backbone
 - Resolving responses emitted from setting multiple event listeners to the same event.
+- Finding a better way to think about and implement CSS
+- 
 
 
 
