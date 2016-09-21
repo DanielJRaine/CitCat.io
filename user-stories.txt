@@ -1,0 +1,15 @@
+As a player, I want to be able to play a game of tic-tac-toe, so I can have fun.
+As a player, I want to be able to play against a friend locally, so I can play without internet.
+As a player, I want to be able to play against people over the internet, so I can play at a distance.
+As a player, I want to be able to either use my name or play anonymously, so I can choose my level of personal disclosure.
+As a player, I want to be able to keep track of score, so I can have a sense of achievement.
+As a player, I want to be able to customize my player-icon, so I can add personalize my experience.
+As a player, I want responsive sounds and animations when I click on the screen, so I can feel like I am directly interacting with something that's more than just digital.
+As a player, I want a clean, clutter-free interface, so I don't have to be bombarded with distractions from the game experience.
+As a player, I want to have a chat-window with my opponent, so I can interact with them through more than just the game.
+
+As a developer, I want to make my design responsive, so my game can be played on any device.
+As a developer, I want to keep my code flexible, so I can easily add features later on.
+As a developer, I want to keep my systems isolated, so I can easily debug them when one fails or breaks.
+As a developer, I want to write tests for each component of my game, so I can be assured that they will run in any circumstance. 
+As a developer, I want to highlight player achievement, so I can reward the end-user for playing my game.
